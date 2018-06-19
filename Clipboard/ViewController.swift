@@ -26,5 +26,21 @@ class ViewController: UIViewController {
         canvasView.clearCanvas()
     }
     
+    @IBAction func purple(_ sender: Any) {
+    }
+    
+    @IBAction func blue(_ sender: Any) {
+    }
+    
+    @IBAction func red(_ sender: Any) {
+    }
+    
+    @IBAction func green(_ sender: Any) {
+    }
+    
+    @IBAction func white(_ sender: Any) {
+    }
+    
+    
 }
 
