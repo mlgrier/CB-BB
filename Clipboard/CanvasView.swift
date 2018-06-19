@@ -15,12 +15,14 @@ class CanvasView: UIView {
     var path:UIBezierPath!
     var touchPoint:CGPoint!
     var startingPoint:CGPoint!
+    var userColor:UIColor!
     
     override func layoutSubviews() {
         self.clipsToBounds = true
         self.isMultipleTouchEnabled = false
         
-        lineColor = UIColor.white
+        //lineColor = UIColor.black
+        purple()
         lineWidth = 3
         
     }
@@ -50,6 +52,14 @@ class CanvasView: UIView {
         shapeLayer.fillColor = UIColor.clear.cgColor
         self.layer.addSublayer(shapeLayer)
         self.setNeedsDisplay()
+    }
+    
+    func purple() {
+        lineColor = UIColor.purple
+    }
+    
+    func black() {
+        lineColor = UIColor.black
     }
 
     func clearCanvas() {

@@ -27,18 +27,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func purple(_ sender: Any) {
+        canvasView.purple()
     }
     
     @IBAction func blue(_ sender: Any) {
+        canvasView.userColor = UIColor.blue
     }
     
     @IBAction func red(_ sender: Any) {
+        canvasView.userColor = UIColor.red
     }
     
     @IBAction func green(_ sender: Any) {
+        canvasView.userColor = UIColor.green
     }
     
     @IBAction func white(_ sender: Any) {
+        canvasView.userColor = UIColor.white
     }
     
     
