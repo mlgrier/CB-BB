@@ -27,23 +27,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func purple(_ sender: Any) {
-        canvasView.purple()
+        print("pushing purple")
+        //canvasView.purple()
     }
     
     @IBAction func blue(_ sender: Any) {
-        canvasView.userColor = UIColor.blue
+        print("pushing blue")
+       // canvasView.userColor = UIColor.blue
     }
     
     @IBAction func red(_ sender: Any) {
-        canvasView.userColor = UIColor.red
+        print("pushing red")
+        //canvasView.userColor = UIColor.red
     }
     
     @IBAction func green(_ sender: Any) {
-        canvasView.userColor = UIColor.green
+        print("pushing green")
+       // canvasView.userColor = UIColor.green
     }
     
     @IBAction func white(_ sender: Any) {
-        canvasView.userColor = UIColor.white
+        print("pushing white")
+        //canvasView.userColor = UIColor.white
     }
     
     
