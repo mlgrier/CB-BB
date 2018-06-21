@@ -10,48 +10,58 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var canvasView: CanvasView!
-    var userColor:UIColor!
+    @IBOutlet weak var canvasView: UIView!
+    
+    var path = UIBezierPath()
+    var startPoint = CGPoint()
+    var touchPoint = CGPoint()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        canvasView.clipsToBounds = true
+        canvasView.isMultipleTouchEnabled = false
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if let point = touch?.location(in: canvasView) {
+            startPoint = point
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if let point = touch?.location(in: canvasView) {
+            touchPoint = point
+        }
+        
+        path.move(to: startPoint)
+        path.addLine(to: touchPoint)
+        startPoint = touchPoint
+        
+        draw()
+    }
+    
+    func draw() {
+        let strokeLayer = CAShapeLayer()
+        strokeLayer.fillColor = nil
+        strokeLayer.lineWidth = 5
+        strokeLayer.strokeColor = UIColor.black.cgColor
+        strokeLayer.path = path.cgPath
+        canvasView.layer.addSublayer(strokeLayer)
+        canvasView.setNeedsDisplay()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-    @IBAction func clearCanvas(_ sender: Any) {
-        canvasView.clearCanvas()
+    @IBAction func clearButton(_ sender: UIButton) {
+        path.removeAllPoints()
+        canvasView.layer.sublayers = nil
+        canvasView.setNeedsDisplay()
+        
     }
-    
-    @IBAction func purple(_ sender: Any) {
-        print("pushing purple")
-        //canvasView.purple()
-    }
-    
-    @IBAction func blue(_ sender: Any) {
-        print("pushing blue")
-       // canvasView.userColor = UIColor.blue
-    }
-    
-    @IBAction func red(_ sender: Any) {
-        print("pushing red")
-        userColor = UIColor.red
-    }
-    
-    @IBAction func green(_ sender: Any) {
-        print("pushing green")
-       // canvasView.userColor = UIColor.green
-    }
-    
-    @IBAction func white(_ sender: Any) {
-        print("pushing white")
-        //canvasView.userColor = UIColor.white
-    }
-    
     
 }
 
