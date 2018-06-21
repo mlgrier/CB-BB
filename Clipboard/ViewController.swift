@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var canvasView: CanvasView!
+    var userColor:UIColor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
     
     @IBAction func red(_ sender: Any) {
         print("pushing red")
-        //canvasView.userColor = UIColor.red
+        userColor = UIColor.red
     }
     
     @IBAction func green(_ sender: Any) {

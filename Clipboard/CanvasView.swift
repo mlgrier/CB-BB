@@ -21,8 +21,7 @@ class CanvasView: UIView {
         self.clipsToBounds = true
         self.isMultipleTouchEnabled = false
         
-        //lineColor = UIColor.black
-        purple()
+        lineColor = userColor
         lineWidth = 3
         
     }
