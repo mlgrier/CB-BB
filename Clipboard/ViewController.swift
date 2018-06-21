@@ -12,9 +12,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var canvasView: UIView!
     
-    var path = UIBezierPath()
+    var path = UIBezierPath(), pathTwo = UIBezierPath(), pathThree = UIBezierPath(), pathFour = UIBezierPath(), pathFive = UIBezierPath()
+    
     var startPoint = CGPoint()
     var touchPoint = CGPoint()
+    var userPickedColor = UIColor.black.cgColor
 
     
     override func viewDidLoad() {
@@ -40,6 +42,10 @@ class ViewController: UIViewController {
         
         path.move(to: startPoint)
         path.addLine(to: touchPoint)
+        
+        pathTwo.move(to: startPoint)
+        pathTwo.move(to: startPoint)
+        
         startPoint = touchPoint
         
         draw()
@@ -49,9 +55,21 @@ class ViewController: UIViewController {
         let strokeLayer = CAShapeLayer()
         strokeLayer.fillColor = nil
         strokeLayer.lineWidth = 5
-        strokeLayer.strokeColor = UIColor.black.cgColor
+        strokeLayer.strokeColor = userPickedColor
+        //strokeLayer.strokeColor = UIColor.black.cgColor
         strokeLayer.path = path.cgPath
         canvasView.layer.addSublayer(strokeLayer)
+        canvasView.setNeedsDisplay()
+    }
+    
+    func drawPurple() {
+        let strokeLayerTwo = CAShapeLayer()
+        strokeLayerTwo.fillColor = nil
+        strokeLayerTwo.lineWidth = 5
+        strokeLayerTwo.strokeColor = UIColor.purple.cgColor
+        //strokeLayer.strokeColor = UIColor.black.cgColor
+        //strokeLayer.path = path.cgPath
+        canvasView.layer.addSublayer(strokeLayerTwo)
         canvasView.setNeedsDisplay()
     }
 
@@ -61,6 +79,18 @@ class ViewController: UIViewController {
         canvasView.layer.sublayers = nil
         canvasView.setNeedsDisplay()
         
+    }
+    
+    @IBAction func colors(_ sender: UIButton) {
+        if sender.tag == 1 {
+            drawPurple()
+        } else if sender.tag == 3 {
+            userPickedColor = UIColor.red.cgColor
+        } else if sender.tag == 4 {
+            userPickedColor = UIColor.green.cgColor
+        } else if sender.tag == 5 {
+            userPickedColor = UIColor.white.cgColor
+        }
     }
     
 }
